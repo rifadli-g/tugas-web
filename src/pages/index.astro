@@ -1,8 +1,8 @@
 ---
 // Ganti tiga nilai ini dengan data kamu.
-const name = "Rifadli & Horison";
+const name = "Rifadli & Horison [BOOKING LAPANGAN]";
 const tagline = "SISTEM BOOKING LAPANGAN - SOON";
-const email = "rifadlidanhorison@email.com";
+const email = "rifadlihorison@gmail.com";
 ---
 
 <!doctype html>
@@ -21,7 +21,29 @@ const email = "rifadlidanhorison@email.com";
   </head>
   <body>
     <main>
-      <div class="accent-block" aria-hidden="true"></div>
+      <div class="pitch" aria-hidden="true">
+        <svg
+          class="pitch-lines"
+          viewBox="0 0 1000 600"
+          preserveAspectRatio="xMidYMid slice"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect x="30" y="30" width="940" height="540" fill="none" stroke="var(--line)" stroke-width="4" />
+          <line x1="500" y1="30" x2="500" y2="570" stroke="var(--line)" stroke-width="4" />
+          <circle cx="500" cy="300" r="80" fill="none" stroke="var(--line)" stroke-width="4" />
+          <circle cx="500" cy="300" r="4" fill="var(--line)" />
+          <!-- left goal area -->
+          <path d="M30,220 A110,110 0 0 1 30,380" fill="none" stroke="var(--line)" stroke-width="4" />
+          <rect x="30" y="255" width="55" height="90" fill="none" stroke="var(--line)" stroke-width="4" />
+          <circle cx="30" cy="30" r="20" fill="none" stroke="var(--line)" stroke-width="4" />
+          <circle cx="30" cy="570" r="20" fill="none" stroke="var(--line)" stroke-width="4" />
+          <!-- right goal area -->
+          <path d="M970,220 A110,110 0 0 0 970,380" fill="none" stroke="var(--line)" stroke-width="4" />
+          <rect x="915" y="255" width="55" height="90" fill="none" stroke="var(--line)" stroke-width="4" />
+          <circle cx="970" cy="30" r="20" fill="none" stroke="var(--line)" stroke-width="4" />
+          <circle cx="970" cy="570" r="20" fill="none" stroke="var(--line)" stroke-width="4" />
+        </svg>
+      </div>
       <div class="content">
         <h1 class="name">{name}</h1>
         <p class="tagline">{tagline}</p>
@@ -33,11 +55,12 @@ const email = "rifadlidanhorison@email.com";
 
 <style>
   :root {
-    --bg: #151210;
+    --turf-dark: #14522f;
+    --turf-light: #1a6339;
+    --line: rgba(245, 240, 232, 0.55);
     --text: #f5f0e8;
-    --muted: #8a8580;
-    --accent: #ff5a36;
-    --accent-2: #ffc53d;
+    --muted: #cfe4d6;
+    --accent: #ffc53d;
   }
 
   * {
@@ -48,13 +71,17 @@ const email = "rifadlidanhorison@email.com";
   body {
     margin: 0;
     height: 100%;
-    background: var(--bg);
     color: var(--text);
   }
 
   body {
     font-family: "Space Grotesk", sans-serif;
     overflow-x: hidden;
+    background: repeating-linear-gradient(
+      0deg,
+      var(--turf-dark) 0 48px,
+      var(--turf-light) 48px 96px
+    );
   }
 
   main {
@@ -66,22 +93,27 @@ const email = "rifadlidanhorison@email.com";
     align-items: flex-end;
     padding: 6vw 6vw 8vw;
     padding-bottom: calc(8vw + env(safe-area-inset-bottom, 0px));
+    overflow: hidden;
   }
 
-  .accent-block {
+  .pitch {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 38%;
-    height: 55%;
-    background: var(--accent);
-    clip-path: polygon(100% 0, 100% 100%, 0 0);
+    inset: 0;
+  }
+
+  .pitch-lines {
+    width: 100%;
+    height: 100%;
   }
 
   .content {
     position: relative;
     z-index: 1;
     max-width: 900px;
+    padding: 2rem 2.25rem;
+    background: rgba(10, 26, 17, 0.38);
+    backdrop-filter: blur(6px);
+    border-radius: 4px;
   }
 
   .name {
@@ -107,7 +139,7 @@ const email = "rifadlidanhorison@email.com";
     display: inline-block;
     color: var(--text);
     text-decoration: none;
-    border-bottom: 1px solid var(--accent-2);
+    border-bottom: 1px solid var(--accent);
     padding-bottom: 2px;
     font-size: 0.95rem;
     transition: color 0.2s ease, border-color 0.2s ease;
@@ -115,11 +147,11 @@ const email = "rifadlidanhorison@email.com";
 
   .contact:hover,
   .contact:focus-visible {
-    color: var(--accent-2);
+    color: var(--accent);
   }
 
   .contact:focus-visible {
-    outline: 2px solid var(--accent-2);
+    outline: 2px solid var(--accent);
     outline-offset: 4px;
   }
 
@@ -139,12 +171,11 @@ const email = "rifadlidanhorison@email.com";
   }
 
   @media (max-width: 640px) {
-    .accent-block {
-      width: 55%;
-      height: 28%;
-    }
     main {
       padding: 12vw 7vw 12vw;
+    }
+    .content {
+      padding: 1.5rem 1.5rem;
     }
   }
 </style>
