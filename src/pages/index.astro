@@ -1,0 +1,150 @@
+---
+// Ganti tiga nilai ini dengan data kamu.
+const name = "Rifadli & Horison";
+const tagline = "Jabatan / Profesi — Kota, Negara";
+const email = "rifadlidanhorison@email.com";
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{name}</title>
+    <meta name="description" content={`Halaman profil ${name}`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,900&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="accent-block" aria-hidden="true"></div>
+      <div class="content">
+        <h1 class="name">{name}</h1>
+        <p class="tagline">{tagline}</p>
+        <a class="contact" href={`mailto:${email}`}>{email}</a>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  :root {
+    --bg: #151210;
+    --text: #f5f0e8;
+    --muted: #8a8580;
+    --accent: #ff5a36;
+    --accent-2: #ffc53d;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  body {
+    font-family: "Space Grotesk", sans-serif;
+    overflow-x: hidden;
+  }
+
+  main {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: flex-end;
+    padding: 6vw 6vw 8vw;
+    padding-bottom: calc(8vw + env(safe-area-inset-bottom, 0px));
+  }
+
+  .accent-block {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 38%;
+    height: 55%;
+    background: var(--accent);
+    clip-path: polygon(100% 0, 100% 100%, 0 0);
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+  }
+
+  .name {
+    font-family: "Fraunces", serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 9vw, 7rem);
+    line-height: 0.95;
+    margin: 0 0 1rem;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.8s ease-out 0.1s forwards;
+  }
+
+  .tagline {
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    color: var(--muted);
+    margin: 0 0 2rem;
+    max-width: 40ch;
+  }
+
+  .contact {
+    display: inline-block;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-2);
+    padding-bottom: 2px;
+    font-size: 0.95rem;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .contact:hover,
+  .contact:focus-visible {
+    color: var(--accent-2);
+  }
+
+  .contact:focus-visible {
+    outline: 2px solid var(--accent-2);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .name {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes rise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .accent-block {
+      width: 55%;
+      height: 28%;
+    }
+    main {
+      padding: 12vw 7vw 12vw;
+    }
+  }
+</style>
